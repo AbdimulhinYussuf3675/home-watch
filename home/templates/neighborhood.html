@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+
+<!-- Admin Neighborhood -->
+{% if request.user.id == 1 %}
+<div class="container">
+  <h3 class="center-align">{{neighborhood.neighborhood_name}}</h3>
+  <div class="row">
+    <div class="col s12 m12 l6 xl6">
+      <div class="card">
+        <div class="card-content">
+          <h4 class="card-title center-align">Members</h4>
+          <div class="divider"></div>
+          {% if members %}
+          <ul>
+            {% for member in members %}
+            <li>{{member.user.username}}{% if member.location %} &mdash; {{member.location}}{% endif %}</li>
+            {% endfor %}
+          </ul>
+          {% else %}
+          <h5 class="center-align">No members yet</h5>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="col s12 m12 l6 xl6">
+      <div class="card">
+        <div class="card-content">
+          <h4 class="card-title center-align">Emergency Contacts</h4>
+          <div class="divider"></div>
+          {% if emergencies %}
+          <ul>
+            {% for emergency in emergencies %}
+            <li>
+              <ul>
+                <li>
+                  <h6>{{emergency.name}}</h6>
+                </li>
+                <li>Phone: {{emergency.contacts}}</li>
+                <li>Email: {{emergency.email}}</li>
+              </ul>
+            </li>
+            {% endfor %}
+          </ul>
+          {% else %}
+          <h5 class="center-align">No Emergency Contacts</h5>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% else %}
+  <!-- User's Neighborhood -->
+  <div class="container">
+
+    <!-- Emergency Contacts Modal -->
+    <div id="modal2" class="modal">
+      <div class="modal-content">
+        <h4 class="center-align">Emergency Contacts</h4>
+        <div class="divider"></div>
+        <ul>
+          {% for emergency in emergencies %}
+          <li>
+            <ul>
+              <li>
+                <h6>{{emergency.name}}</h6>
+              </li>
+              <li>Phone: {{emergency.contacts}}</li>
+              <li>Email: {{emergency.email}}</li>
+            </ul>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <a class="modal-close btn-flat" style="color:#52A8A8;">Close</a>
+      </div>
+    </div>
+
+    <h4 class="center-align text-white">Welcome to {{neighborhood.neighborhood_name}} Updates, {{user.user.username}}</h4>
+    <div class="row">
+      <div class="col sm12 m12 l8 xl8">
+        <div class="card">
+          <div class="card-content">
+            <div class="section">
+              <h5 class="card-title center-align">Notifications</h5>
+              <a href="#modal3" data-target="modal3" class="modal-trigger btn-floating" style="background-color:#52A8A8!important;"><i class="material-icons">add</i></a>
+            </div>
+
+            <!-- Post Form Modal -->
+            <div id="modal3" class="modal">
+              <div class="modal-content">
+                <h4 class="center-align">Post Alert/Meeting</h4>
+                <div class="divider"></div>
+                <form action="{% url 'neighborhood' neighborhood.id %}" method="POST">
+                  {% csrf_token %}
+                  {% bootstrap_form form%}
+                  <button class="btn" style="background-color:#52A8A8;" type="submit" name="action">Post</button>
+                </form>
+              </div>
+            </div>
+
+            <div class="divider"></div>
+            {% if posts %}
+            {% for post in posts %}
+            <div class="section">
+              <h6 class="center-align">{{post.title}}</h6>
+              {% autoescape on %}
+              <p class="center-align">{{post.post_description | safe}}</p>
+              {% endautoescape %}
+              <p style="text-decoration-style: solid;"><strong>Posted on {{post.posted_on|date:'D,d M,Y'}} by {% if post.posted_by == request.user %}me{% else %}{{post.posted_by.username}}{% endif %}</strong></p>
+            </div>
+            <div class="divider"></div>
+            {% endfor %}
+            {% else %}
+            <h6>Nothing has been posted yet</h6>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m12 l4 xl4">
+        <div class="card">
+          <div class="card-content">
+            <h4 class="card-title center-align"><b>Businesses</b></h4>
+            {% if businesses %}
+            <ul>
+              {% for business in businesses %}
+              <li>
+                <ul>
+                  <li>
+                    <h5 style="text-decoration-style: solid;">{{business.name}}</h5>
+                  </li>
+                  <li>Located At: {{business.business_location}}</li>
+                  <li>Business email: {{business.email}}</li>
+                </ul>
+              </li>
+              {% endfor %}
+            </ul>
+            {% else %}
+            <h6>No businesses yet</h6>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  {% endblock %}
