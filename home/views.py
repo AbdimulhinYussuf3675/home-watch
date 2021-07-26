@@ -3,7 +3,8 @@ from django.http  import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
-from .models import Neighborhood,UserProfile,Business
+from .models import Neighborhood,UserProfile,Business,EmergencyContacts,Post
+from .forms import NeighborhoodForm,UpdateProfileForm,AddBusinessForm,PostForm
 from django.contrib.auth.models import User
 import datetime
 
@@ -84,4 +85,35 @@ def profile(request,user_id):
     neighborhoods = Neighborhood.objects.all()
 
     return render(request,'profile.html',{'neighborhoods':neighborhoods,'businesses':businesses,'profile':profile,'form':form,'emergencies':emergencies})
+
+def add_business(request):
+    user = User.objects.filter(id = request.user.id).first()
+    profile = UserProfile.objects.filter(user = user).first()
+    if request.method == 'POST':
+        business_form = AddBusinessForm(request.POST)
+        if business_form.is_valid():
+            business = Business(name = request.POST['name'],owner = user,business_neighborhood = profile.neighborhood,email=request.POST['email'])
+            business.save()
+        return redirect(reverse('profile',args=[user.id]))
+    else:
+        business_form = AddBusinessForm()
+    return render(request,'business.html',{'business_form':business_form})
+
+def search(request):
+    try:
+        if 'business' in request.GET and request.GET['business']:
+            search_term = request.GET.get('business')
+            searched_business = Business.objects.get(name__icontains=search_term)
+            return render(request,'search.html',{'searched_business':searched_business})
+    except (ValueError,Business.DoesNotExist):
+        message = "Oops! We couldn't find the business you're looking for."
+        return render(request,'search.html',{'message':message})
+    return render(request,'search.html',{'message':message,'searched_business':searched_business})
+
+def change_neighborhood(request,neighborhood_id):
+    profile = UserProfile.objects.filter(user = request.user).first()
+    neighborhood = Neighborhood.objects.get(id=neighborhood_id)
+    profile.neighborhood = neighborhood
+    profile.save()
+    return redirect(reverse('neighborhood',args=[neighborhood.id]))
 
