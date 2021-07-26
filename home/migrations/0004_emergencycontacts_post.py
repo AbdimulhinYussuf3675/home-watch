@@ -5,7 +5,7 @@ from __future__ import unicode_literals
 from django.conf import settings
 from django.db import migrations, models
 import django.db.models.deletion
-import tinymce.models
+
 
 
 class Migration(migrations.Migration):
@@ -31,7 +31,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(max_length=40)),
-                ('post_description', tinymce.models.HTMLField()),
+                ('post_description', models.TextField()),
                 ('posted_on', models.DateTimeField(auto_now_add=True)),
                 ('post_hood', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='home.Neighborhood')),
                 ('posted_by', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
