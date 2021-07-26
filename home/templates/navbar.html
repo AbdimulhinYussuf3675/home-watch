@@ -1,37 +1,42 @@
 <div class="navbar-fixed">
   <nav class=" black  darken-3">
     <div class="nav-wrapper">
-      <a class="brand-logo" href="/"><i class="material-icons">home</i>Neighborhood</a>
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">Menu</i></a>
-      <ul class="right hide-on-med-and-down">
-        <!-- Administrator's Navbar -->
-        {% if request.user.id == 1 and request.user.is_authenticated %}
-        <li><a href="/">Home</a></li>
-        <li><a href="/admin">Admin</a></li>
-        <li><a href="#modal1" data-target="modal1" class="modal-trigger">Create Neighborhood</a></li>
-        <li><a href="{% url 'signout' %}">Logout</a></li>
-        {% else %}
-        <!-- Users' Navbar -->
-        {% if request.user.is_authenticated %}
-        <li>
-          <form class="form-inline my-2 my-lg-0 mx-auto" role="search" action="{% url 'search' %}">
-            <div class="row">
-              <div class="col s8">
-                <input style="color:rgb(255, 255, 255); border-bottom:1px solid white;" class="form-input inline mr-sm-2" type="text" placeholder="Search" aria-label="Search" name='business'>
+      <div class="container-fluid">
+        <a class="brand-logo" href="/"><i class="material-icons">home</i>kanairo</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">Menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <!-- Administrator's Navbar -->
+          {% if request.user.id == 1 and request.user.is_authenticated %}
+          <li><a href="/">Home</a></li>
+          <li><a href="/admin">Admin</a></li>
+          <li><a href="#modal1" data-target="modal1" class="modal-trigger">Create Neighborhood</a></li>
+          <li><a href="{% url 'signout' %}">Logout</a></li>
+          {% else %}
+          <!-- Users' Navbar -->
+          {% if request.user.is_authenticated %}
+          <li>
+            <form class="form-inline my-2 my-lg-0 mx-auto" role="search" action="{% url 'search' %}">
+              <div class="row">
+                <div class="col s8">
+                  <input style="color:rgb(255, 255, 255); border-bottom:1px solid white;"
+                    class="form-input inline mr-sm-2" type="text" placeholder="Search" aria-label="Search"
+                    name='business'>
+                </div>
+                <div class="col s4">
+                  <button type="submit" class="btn btn-small"
+                    style="color:#52A8A8; background-color:#fff; border:none; border-radius:10px;">Search</button>
+                </div>
               </div>
-              <div class="col s4">
-                <button type="submit" class="btn btn-small" style="color:#52A8A8; background-color:#fff; border:none; border-radius:10px;">Search</button>
-              </div>
-            </div>
-          </form>
-        </li>
-        <li><a href="#modal2" data-target="modal2" class="modal-trigger">Emergency Contacts</a></li>
-        <li><a href="{% url 'profile' request.user.id %}">My Profile</a></li>
-        <li><a href="{% url 'signout' %}">Logout</a></li>
-        {% endif %}
-        {% endif %}
-      </ul>
-    </div>  
+            </form>
+          </li>
+          <li><a href="#modal2" data-target="modal2" class="modal-trigger">Emergency Contacts</a></li>
+          <li><a href="{% url 'profile' request.user.id %}">My Profile</a></li>
+          <li><a href="{% url 'signout' %}">Logout</a></li>
+          {% endif %}
+          {% endif %}
+        </ul>
+      </div>
+      </div>
   </nav>
 </div>
 
@@ -50,10 +55,12 @@
     <form class="form-inline my-2 my-lg-0 mx-auto" role="search" action="{% url 'search' %}">
       <div class="row">
         <div class="col s8">
-          <input style="color:#52A8A8; border-bottom:1px solid #52A8A8;" class="form-input inline mr-sm-2" type="text" placeholder="Search" aria-label="Search" name='business'>
+          <input style="color:#52A8A8; border-bottom:1px solid #52A8A8;" class="form-input inline mr-sm-2" type="text"
+            placeholder="Search" aria-label="Search" name='business'>
         </div>
         <div class="col s4">
-          <button type="submit" class="btn btn-small" style="color:#fff; background-color:#52A8A8; border:none; border-radius:10px;">Search</button>
+          <button type="submit" class="btn btn-small"
+            style="color:#fff; background-color:#52A8A8; border:none; border-radius:10px;">Search</button>
         </div>
       </div>
     </form>
