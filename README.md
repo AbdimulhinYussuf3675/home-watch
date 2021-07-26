@@ -1,6 +1,6 @@
 # Home-Watch
 
-A web application that allows users to be in the contact about everything happening in his/her neighborhood.
+A web application that allows users to get information  about everything happening in his/her neighborhood.
 
 ## Author
 ### [Abdimulhin Adan](https://github.com/AbdimulhinYussuf3675)
