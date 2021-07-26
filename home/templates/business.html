@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+{% block content %}
+<div class="row">
+  <div class="col l3 xl3"></div>
+  <div class="col s12 m12 l6 xl6">
+    <div class="card #52A8A8 darken-1">
+      <div class="card-content">
+        <span class="card-title center-align">Add a Business</span>
+      </div>
+      <div class="card-content">
+        <form action="{% url 'add_business' %}" method="POST">
+          {% csrf_token %}
+          {% bootstrap_form business_form %}
+          <button class="btn" style="background-color:#52A8A8;" type="submit" name="action">Add</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col l3 xl3"></div>
+</div>
+{% endblock %}

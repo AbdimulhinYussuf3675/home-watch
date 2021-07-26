@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
-{% load bootstrap4 %}
+{% load bootstrap3 %}
 {% block content %}
 
 <!-- Admin Neighborhood -->
 {% if request.user.id == 1 %}
 <div class="container">
-  <h3 class="center-align">{{neighborhood.neighborhood_name}}</h3>
+  <h3 class="center-align" >{{neighborhood.neighborhood_name}}</h3>
   <div class="row">
     <div class="col s12 m12 l6 xl6">
       <div class="card">

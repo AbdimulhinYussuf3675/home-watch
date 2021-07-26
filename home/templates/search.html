@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if searched_business %}
+<h3 class="center-align">Found search result</h3>
+<div class="divider"></div>
+<div class="row">
+  <div class="col s3 m3 l4 xl4"></div>
+  <div class="col s6 m6 l4 xl4">
+    <div class="card">
+      <div class="card-content">
+        <h4 class="center-align">{{searched_business.name}}</h4>
+        <ul>
+          <li><h6>Owner: {{searched_business.owner.username}}</h6></li>
+          <li><h6>Email: {{searched_business.email}}</h6></li>
+          <li><h6>Located At: {{searched_business.business_location}}</h6></li>
+          <li><h6>Neighborhood: {{searched_business.business_neighborhood}}</h6></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col s3 m3 l4 xl4"></div>
+</div>
+{% else %}
+<h4 class="center-align"><i style="font-size:100px;" class="material-icons">sentiment_very_dissatisfied</i></h4>
+<h3 class="center-align">{{message}}</h3>
+{% endif %}
+
+
+  <!-- Emergency Contacts Modal -->
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <h4 class="center-align">Emergency Contacts</h4>
+      <div class="divider"></div>
+      <ul>
+        {% for emergency in emergencies %}
+        <li>
+          <ul>
+            <li>
+              <h6>{{emergency.name}}</h6>
+            </li>
+            <li>Phone: {{emergency.contacts}}</li>
+            <li>Email: {{emergency.email}}</li>
+          </ul>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+  </div>
+{% endblock %}

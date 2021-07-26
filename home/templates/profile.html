@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+{% block content %}
+<div class="container">
+  {% if profile.first_name and profile.last_name %}
+  <div class="section">
+    <a href="#modal3" data-target="modal3" class="modal-trigger btn-small" style="background-color:#52A8A8!important;">Change Neighborhood</a>
+
+    <!-- Change Neighborhood Modal -->
+    <div id="modal3" class="modal">
+      <div class="modal-content">
+        <h4 class="center-align">Change Neighborhood</h4>
+        <div class="divider"></div>
+        {% for neighborhood in neighborhoods %}
+        <div class="divider"></div>
+        <div class="section">
+          <a href="{% url 'change_neighborhood' neighborhood.id %}" class="btn-floating" style="background-color:#52A8A8!important;"><i class="material-icons">check</i></a>
+          <h5 class="center-align"><i class="material-icons">home</i>{{neighborhood.neighborhood_name}}</h5>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="modal-footer">
+        <a class="modal-close btn-flat" style="color:#52A8A8;">Close</a>
+      </div>
+    </div>
+
+    <h3 class="center-align text-white">{{profile.first_name}} {{profile.last_name}}</h3>
+    {% if profile.location %}
+    <h6 class="center-align text-white">{{profile.location}}</h6>
+    {% endif %}
+  </div>
+  {% else %}
+  <div class="section">
+    <a href="#" class="btn-small" style="background-color:#52A8A8!important;">Change Neighborhood</a>
+    <h3 class="center-align text-white">My Profile</h3>
+  </div>
+  {% endif %}
+  <div class="divider"></div>
+  <div class="row">
+    <div class="col s12 m12 l6 xl6">
+      <div class="card #52A8A8 darken-1">
+        <div class="card-content">
+          <span class="card-title center-align">Update My Profile</span>
+        </div>
+        <div class="card-content">
+          <form action="{% url 'profile' profile.user.id%}" method="POST">
+            {% csrf_token %}
+            {% bootstrap_form form%}
+            <button class="btn" style="background-color:#52A8A8;" type="submit" name="action">Update</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 m12 l6 xl6">
+      <div class="card #52A8A8 darken-1">
+        <div class="card-content">
+          <span class="card-title center-align">My Businesses</span>
+          <div class="divider"></div>
+        </div>
+        <div class="card-content">
+          <a href="{% url 'add_business' %}" class="modal-trigger btn-small" style="background-color:#52A8A8;">Add Business</a>
+
+          {% if businesses %}
+          <ul>
+            {% for business in businesses %}
+            <li>{{business.name}}</li>
+            {% endfor %}
+          </ul>
+          {% else %}
+          <h5 class="center-align">You don't have any businesses yet</h5>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Emergency Contacts Modal -->
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <h4 class="center-align">Emergency Contacts</h4>
+      <div class="divider"></div>
+      <ul>
+        {% for emergency in emergencies %}
+        <li>
+          <ul>
+            <li>
+              <h6>{{emergency.name}}</h6>
+            </li>
+            <li>Phone: {{emergency.contacts}}</li>
+            <li>Email: {{emergency.email}}</li>
+          </ul>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close btn-flat" style="color:#52A8A8;">Close</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
