@@ -38,17 +38,19 @@
 <!-- Intro Dashboard -->
 {% if user.neighborhood == null and request.user.id != 1 %}
 <div class="container">
-  <h3 class="center-align text-white">Select Your neighborhood</h3>
+  <h3 class="center-align text-white" style="font-size: xx-large; font-family: Luna; font-weight: bold; font-style: oblique; color: black;">Select Your neighborhood</h3>
   <div class="row">
-    {% for neighborhood in neighborhoods %}
-    <div class="divider"></div>
-    <div class="section text-white">
-      <a href="{% url 'neighborhood' neighborhood.id %}" class="btn-floating"
-        style="background-color:#52A8A8!important;"><i class="material-icons">place</i></a>
-      <h4 class="center-align"><i class="material-icons"></i>{{neighborhood.neighborhood_name}}</h4>
+
+    <div class="col-sm">
+      {% for neighborhood in neighborhoods %}
+      <div class="divider"></div>
+      <div class="section text-white">
+        <a href="{% url 'neighborhood' neighborhood.id %}" class="btn-floating"
+          style="background-color:#34d4d4!important;"><i class="material-icons">place</i></a>
+        <h4 class="center-align"><i class="material-icons"></i>{{neighborhood.neighborhood_name}}</h4>
+      </div>
+      {% endfor %}
     </div>
-    {% endfor %}
   </div>
-</div>
-{% endif %}
-{% endblock %}
+  {% endif %}
+  {% endblock %}
