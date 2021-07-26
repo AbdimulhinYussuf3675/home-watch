@@ -1,6 +1,6 @@
 # Home-Watch
 
-A web application that allows you to be in the loop about everything happening in your neighborhood.
+A web application that allows users to be in the contact about everything happening in his/her neighborhood.
 
 ## Author
 ### [Abdimulhin Adan](https://github.com/AbdimulhinYussuf3675)
@@ -55,6 +55,8 @@ git clone (https://github.com/Marcusjnls/biz-mtaani.git)
 
     **Output Example**: Navigate to the admin dashboard
 
+## Setup Instructions:
+### Requirements
 
 * set up a virtual environment using the following command
 ```
