@@ -132,12 +132,10 @@ View the following [document](https://github.com/bernie-haxx/Deployment_to_herok
 
 ## Built Using
 
-* [Django](https://www.djangoproject.com/download/)
+* Python [Django](https://www.djangoproject.com/download/)
 * [Bootstrap](https://getbootstrap.com)
 * [MDBootstrap](https://mdbootstrap.com/)
 * Html
-* Python
-* Materialize
 
 # Contacts
 adam.abdimulhi.001@gmail.com
