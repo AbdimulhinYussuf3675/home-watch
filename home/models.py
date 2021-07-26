@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
-from tinymce.models import HTMLField
+
 
 # Create your models here.
 class Neighborhood(models.Model):
@@ -83,7 +83,7 @@ class EmergencyContacts(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=40)
-    post_description = HTMLField()
+    post_description = models.TextField()
     posted_by = models.ForeignKey(User,on_delete=models.CASCADE)
     post_hood = models.ForeignKey('Neighborhood',on_delete=models.CASCADE)
     posted_on = models.DateTimeField(auto_now_add=True)
