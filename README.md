@@ -106,11 +106,10 @@ python3.6 manage.py tests
 
 View the following [document](https://github.com/bernie-haxx/Deployment_to_heroku_django) in order to deploy to a live system
 
-## Built Using
+## Technologies Used
 
 * Python [Django](https://www.djangoproject.com/download/)
 * [Bootstrap](https://getbootstrap.com)
-* [MDBootstrap](https://mdbootstrap.com/)
 * Html
 
 # Contacts
