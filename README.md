@@ -9,48 +9,22 @@ A web application that allows users to get information  about everything happeni
 
 
 
-## Behavior Driven Development
-* The program should navigate to the login page on load:
+## User stories
+A user can :
+* Sign in with the application to start using.
 
-     **Input Example**: On page load
+* Set up a profile about me and a general location and my neighborhood name.
 
-     **Output Example**: Navigate to the login page
+* Find a list of different businesses in my neighborhood.
 
-* The program should navigate to sign up page when Sign Up is clicked on the login form:
+* Find Contact Information for the health department and Police authorities near my neighborhood.
 
-     **Input Example**: Click on **Sign Up** on the login form
+* Create Posts that will be visible to everyone in my neighborhood.
 
-     **Output Example**: Redirected to the sign up page
 
-* The program should navigate to the login page when Logout is clicked on the navigation bar:
+* Change My neighborhood when I decide to move out.
 
-     **Input Example**: Click on **Logout** on the navigation bar
-
-     **Output Example**: Redirected to the login page
-
-* The program should direct the user to their neighborhood page when logged in and already has a neighborhood:
-
-    **Input Example**: Log in
-
-    **Output Example**: Redirected to their neighborhood page
-
-* The program should direct the user to the index page with neighborhood listings when logged in and has no neighborhood:
-
-    **Input Example**: Log in
-
-    **Output Example**: Redirect the user to the index page with neighborhood listings
-
-* The program should navigate to the profile page when the My Profile is clicked on the navigation bar:
-
-    **Input Example**: Click on **My Profile** on the navigation bar
-
-    **Output Example**: Redirected to the profile page
-
-* The program should navigate to the admin dashboard when one logs in as an admin:
-
-    **Input Example**: Login in as Admin
-
-    **Output Example**: Navigate to the admin dashboard
+* Only view details of a single neighborhood.
 
 ## Setup Instructions:
 ### Requirements
