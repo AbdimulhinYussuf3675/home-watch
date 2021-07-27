@@ -141,6 +141,6 @@ View the following [document](https://github.com/bernie-haxx/Deployment_to_herok
 adam.abdimulhi.001@gmail.com
 
 ## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+[![License](https://img.shields.io/packagist/l/loopline-systems/closeio-api-wrapper.svg)](http://opensource.org/licenses/MIT)
+>MIT license &copy;  2021 Abdimulhin
 
