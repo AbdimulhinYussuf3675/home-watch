@@ -9,7 +9,7 @@ A web application that allows users to get information  about everything happeni
 
 Fork this repository or clone it to your local machine running Ubuntu by using the following commands:
 ```
-git clone (https://github.com/Marcusjnls/biz-mtaani.git)
+git clone (https://github.com/AbdimulhinYussuf3675/home-watch.git)
 ```
 
 ## Behavior Driven Development
