@@ -7,10 +7,7 @@ A web application that allows users to get information  about everything happeni
 
 ## Getting Started
 
-Fork this repository or clone it to your local machine running Ubuntu by using the following commands:
-```
-git clone (https://github.com/AbdimulhinYussuf3675/home-watch.git)
-```
+
 
 ## Behavior Driven Development
 * The program should navigate to the login page on load:
@@ -58,6 +55,11 @@ git clone (https://github.com/AbdimulhinYussuf3675/home-watch.git)
 ## Setup Instructions:
 ### Requirements
 
+
+Fork this repository or clone it to your local machine running Ubuntu by using the following commands:
+```
+git clone (https://github.com/AbdimulhinYussuf3675/home-watch.git)
+```
 * set up a virtual environment using the following command
 ```
 python3.8 -m venv --without-pip virtual
